@@ -1,0 +1,9 @@
+plan of a website that holds accounts of sofrim that sell their own products and i take either a certein percentege of each sell or ormimg moeny thrgou advertiss
+
+the buldiing of the website is as following:
+first youve got the main page that explaines the idea also for the costumer and also for the seller then youve got a option of seeing products sorted buy catagory seeing sellers and seeing kosher stamps.
+then youve got the option of sellers opening an account and uploding their products woth images etc..
+by the costemr side you can also see the best sellers most populer most good revies.
+
+
+

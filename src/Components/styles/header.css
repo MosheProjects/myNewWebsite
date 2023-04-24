@@ -1,0 +1,46 @@
+.navbar-main {
+    background-color: #142a4d;
+    color: #fff;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+  }
+  
+  .dropdown-toggle {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .user-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .grayscale {
+    filter: grayscale(100%);
+  }
+  
+  .dropdown-menu {
+    top: 100%;
+    left: 0;
+    right: auto;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 0.25rem; 
+  
+  }
