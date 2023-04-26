@@ -20,7 +20,7 @@ export function CurrenUserInfoProvider({ children }) {
     {
       getDataFS("Customers",currentUser.email)
       .then((data)=>{
-        if(!data)
+        if(data===null)
         {
           getDataFS("Sellers",currentUser.email)
           .then((data)=>{

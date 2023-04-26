@@ -47,7 +47,7 @@ const [sofer, setSofer] = useState();
 
 useEffect(() => {
   const tempArr = [];
-  const dataOfUsers = getWholeCollection("Sellers", "sofer","true");
+  const dataOfUsers = getWholeCollection("Sellers", "sofer",true);
   dataOfUsers.then((data) => {
     console.log(data);
     data.forEach((doc) => {

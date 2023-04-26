@@ -25,7 +25,7 @@ export default function Sofer() {
 
   useEffect(() => {
     const tempArr = [];
-    const dataOfUsers = getWholeCollection("Sellers", "sofer","true");
+    const dataOfUsers = getWholeCollection("Sellers", "sofer",true);
     dataOfUsers.then((data) => {
       console.log(data);
       data.forEach((doc) => {
@@ -47,12 +47,10 @@ export default function Sofer() {
     <div dir="rtl">
       {sofer ? (
         <Tabs
-          defaultActiveKey="profile"
-          id="uncontrolled-tab-example"
+          id="responsive-tabs"
           className="mb-3"
           justify
           transition={false}
-          fill
         >
           <Tab eventKey="profile" title="פרופיל">
             <div

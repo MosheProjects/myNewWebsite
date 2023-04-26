@@ -82,8 +82,8 @@ export default function AddingSeller() {
   }
 
   return (
-    <div dir="rtl" className="w-100">
-      <div className="w-25 m-5 border rounded">
+    <div dir="rtl" className="w-100 d-flex justify-content-center " >
+      <div className=" m-5 border rounded">
         <h3>העלאת מוצרי סת"ם למכירה</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Select
