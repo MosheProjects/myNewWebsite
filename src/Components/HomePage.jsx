@@ -15,16 +15,16 @@ export default function HomePage() {
 
   return (
     <div className="mb-4" dir="rtl" style={{ backgroundColor: "LightGray" }}>
-     <Carousel className="h-75 d-flex justify-content-center align-items-center" indicators={false} nextLabel={null} controls={false}>
-  <Carousel.Item className="h-75 justify-content-center align-items-center">
+     <Carousel className="h-75 d-flex border border-5 justify-content-center align-items-center" indicators={false} nextLabel={null} controls={false}>
+  <Carousel.Item className="h-75 border ">
     <h1 className="mb-4" style={{ fontSize: '36px' }}>מחפש לקנות את המזוזה הכי מהודרת ואתה מרגיש אבוד?</h1>
     <div className="border rounded w-50" style={{ fontSize: '24px' }}>אצלינו תוכל לוודא שאתה אכן קונה את המוצר הכי טוב והכי מהודר במחיר הכי טוב</div>
   </Carousel.Item>
-  <Carousel.Item>
+  <Carousel.Item  className="h-75 border">
     <h1 className="mb-4" style={{ fontSize: '36px' }}>הבר-מצווה של הבן מתקרב ואתה מרגיש מבולבל?</h1>
     <div  className="border rounded w-50" style={{ fontSize: '24px' }}>אצלינו תוכל למצוא את הפרשיות הכי מהודרות מבלי לחשוש</div>
   </Carousel.Item>
-  <Carousel.Item >
+  <Carousel.Item  className="h-75 border">
     <h1 className="mb-4" style={{ fontSize: '36px' }}>האתר בו תוכל למצוא את הסת"ם הכי מהודר בהתאם לכיס שלך</h1>
     <p className="border rounded w-50" style={{ fontSize: '24px' }}>סופרי סת"ם מציעים כאן את המוצרים שלהם מבלי אמצעים כל אחד יכול לבדוק מה מתאים עבורו הן מבחינת ההידור והכתב והן מבחינת המחיר וכל זה עם יכולת לדרג את הכתב והמוצר של הסופר שממנו קנית</p>
   </Carousel.Item>
