@@ -42,7 +42,7 @@ tempArr.push(doc.data())
           <Card.Header>סופר</Card.Header>
           <Card.Body>
             <Card.Title>{sofer.pName + " " +  sofer.sName}</Card.Title>
-            <Card.Text>
+            <Card.Text className="mt-3">
              {sofer.desription}
             </Card.Text>
           </Card.Body>
