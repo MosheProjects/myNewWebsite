@@ -15,21 +15,44 @@ export default function HomePage() {
 
   return (
     <div className="mb-4" dir="rtl" style={{ backgroundColor: "LightGray" }}>
-     <Carousel style={{height:'250px'}} className=" d-flex border border-5 justify-content-center align-items-center" indicators={false} nextLabel={null} controls={false}>
-  <Carousel.Item  className="border">
-    <h1 className="mb-4" style={{ fontSize: '36px' }}>מחפש לקנות את המזוזה הכי מהודרת ואתה מרגיש אבוד?</h1>
-    <div className="border rounded" style={{ fontSize: '24px' }}>אצלינו תוכל לוודא שאתה אכן קונה את המוצר הכי טוב והכי מהודר במחיר הכי טוב</div>
-  </Carousel.Item>
-  <Carousel.Item  className=" border">
-    <h1 className="mb-4" style={{ fontSize: '36px' }}>הבר-מצווה של הבן מתקרב ואתה מרגיש מבולבל?</h1>
-    <div  className="border rounded " style={{ fontSize: '24px' }}>אצלינו תוכל למצוא את הפרשיות הכי מהודרות מבלי לחשוש</div>
-  </Carousel.Item>
-  <Carousel.Item  className=" border">
-    <h1 className="mb-4" style={{ fontSize: '36px' }}>האתר בו תוכל למצוא את הסת"ם הכי מהודר בהתאם לכיס שלך</h1>
-    <p className="border rounded" style={{ fontSize: '24px' }}>סופרי סת"ם מציעים כאן את המוצרים שלהם מבלי אמצעים כל אחד יכול לבדוק מה מתאים עבורו הן מבחינת ההידור והכתב והן מבחינת המחיר  <br/> וכל זה עם יכולת לדרג את הכתב והמוצר של הסופר שממנו קנית</p>
-  </Carousel.Item>
-</Carousel>
-
+  <Carousel 
+      style={{ height: "500px" }} 
+      fade 
+      controls={false} 
+      indicators={false}
+      interval={3000}
+    >
+      <Carousel.Item>
+        <Container>
+          <Row className="justify-content-center align-items-center">
+            <Col md={6} className="text-center">
+              <h1 className="mb-4">מחפש לקנות את המזוזה הכי מהודרת ואתה מרגיש אבוד?</h1>
+              <p>אצלינו תוכל לוודא שאתה אכן קונה את המוצר הכי טוב והכי מהודר במחיר הכי טוב</p>
+            </Col>
+          </Row>
+        </Container>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Container>
+          <Row className="justify-content-center align-items-center">
+            <Col md={6} className="text-center">
+              <h1 className="mb-4">הבר-מצווה של הבן מתקרב ואתה מרגיש מבולבל?</h1>
+              <p>אצלינו תוכל למצוא את הפרשיות הכי מהודרות מבלי לחשוש</p>
+            </Col>
+          </Row>
+        </Container>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Container>
+          <Row className="justify-content-center align-items-center">
+            <Col md={6} className="text-center">
+              <h1 className="mb-4">האתר בו תוכל למצוא את הסת"ם הכי מהודר בהתאם לכיס שלך</h1>
+              <p>סופרי סת"ם מציעים כאן את המוצרים שלהם מבלי אמצעים כל אחד יכול לבדוק מה מתאים עבורו הן מבחינת ההידור והכתב והן מבחינת המחיר וכל זה עם יכולת לדרג את הכתב והמוצר של הסופר שממנו קנית</p>
+            </Col>
+          </Row>
+        </Container>
+      </Carousel.Item>
+    </Carousel>
       <div className=" mt-4 d-flex flex-wrap">
         <Row className="row justify-content-center gap-3">
           <Col xs={12} md={6} lg={4} className="col">
