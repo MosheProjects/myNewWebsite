@@ -193,6 +193,9 @@ export default function Sofer() {
           <Tab eventKey="products" title="מוצרים">
             prducts{" "}
           </Tab>
+          <Tab eventKey="reveiws" title="חוות דעת">
+            חוות דעת{" "}על הסופר
+          </Tab>
         </Tabs>
       ) : (
         <ThreeDots />
