@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card,Row,Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useFirestore } from "../Context/FireStoreContext";
+import ThreeDots from "./ThreeDots";
 
 
 
@@ -29,7 +30,8 @@ tempArr.push(doc.data())
 
   return (
     <div className=" d-flex flex-wrap justify-content-center gap-3" dir="rtl">
-      {sofrim?.map((sofer,i) => {
+
+      {sofrim? sofrim.map((sofer,i) => {
         return(
             <Row className="row mt-3">
             <Col xs={12} md={6} lg={4} className='col'>
@@ -50,7 +52,7 @@ tempArr.push(doc.data())
         </Col>
         </Row>
         )
-      })}
+      }):<ThreeDots/>}
     </div>
   );
 }
