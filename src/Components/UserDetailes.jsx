@@ -27,7 +27,7 @@ export default function UserDetailes() {
           justify
           
         >
-          <Tab eventKey="account" title="החשבון שלך">
+          <Tab eventKey="account" title="החשבון שלך" >
             <div className="vh-100 " >חשבון שלך</div>
           </Tab>
           <Tab eventKey="orders" title="ההזמנות שלך">
