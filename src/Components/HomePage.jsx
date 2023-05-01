@@ -4,7 +4,9 @@ import { Card, Row, Col, Container, Carousel } from "react-bootstrap";
 import Rating from "@mui/material/Rating";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
+import { FaPhone, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import Whatsapp from "../Whatsapp";
+import './styles/homepage.css'
 export default function HomePage() {
   const [hover1, setHover1] = useState();
   const [hover2, setHover2] = useState();
@@ -12,9 +14,9 @@ export default function HomePage() {
   const [hover4, setHover4] = useState();
   const [hover5, setHover5] = useState();
   const [hover6, setHover6] = useState();
-
+  
   return (
-    <div className="mb-4" dir="rtl" style={{ backgroundColor: "LightGray" }}>
+    <div className="mb-4 " dir="rtl" style={{ backgroundColor: "LightGray" }}>
   <Carousel 
       style={{ height: "300px" }} 
       controls={false} 
@@ -33,6 +35,7 @@ export default function HomePage() {
         </Container>
       </Carousel.Item>
       <Carousel.Item>
+
         <Container>
           <Row className="justify-content-center align-items-center">
             <Col md={6} className="text-center">
@@ -56,7 +59,7 @@ export default function HomePage() {
         </Container>
       </Carousel.Item>
     </Carousel>
-      <div className=" mt-4 d-flex flex-wrap">
+      <div className=" mt-4 d-flex flex-wrap gap-3 justify-content-center" >
         <Row className="row justify-content-center gap-3">
           <Col xs={12} md={6} lg={4} className="col">
             <Card
@@ -190,8 +193,20 @@ export default function HomePage() {
             </Card>
           </Col>
         </Row>
+        <div className="special-order-message">
+ <div className="ad-banner">
+        <h3>לא מוצא את מה שחיפשת?</h3>
+        <p>זקוק למוצרי סת"ם שלא מופיעים כרגע באתר או לכמות יותר גדולה?</p>
+        <button>הזמן</button>
       </div>
-
+      <div className="contact-options">
+        <a href="tel:+972586770870"><FaPhone /> 0586-770-870</a>
+        <a href="https://wa.me/+972586770870"><FaWhatsapp />  0586-770-870</a>
+        <a href="mailto:sofraistam@gmail.com"><FaEnvelope /> sofraistam@gmail.com</a>
+      </div>
+    </div>
+      </div>
+ 
       <div
         className="d-flex justify-content-center align-items-center mt-3"
         style={{ backgroundColor: "brown", height: "150px" }}

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useContext, createContext } from 'react'
 import { auth } from '../firebase'
-import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, sendEmailVerification} from 'firebase/auth'
 
 const AuthContext = createContext();
 
@@ -16,7 +16,19 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     function signup(email, password) {
-        return createUserWithEmailAndPassword(auth, email, password)
+         createUserWithEmailAndPassword(auth, email, password)
+         .then(()=>{
+            const user = auth.currentUser;
+            sendEmailVerification(user,)
+              .then(() => {
+                console.log("email sent");
+              })
+              .catch((error) => {
+console.log("got problem email verf NOT sent");              });
+         })
+
+
+
     }
     function login(email, password) {
         return signInWithEmailAndPassword(auth, email, password)
@@ -39,6 +51,11 @@ export function AuthProvider({ children }) {
         })
         return unsubscribe
     }, [])
+
+
+
+
+    
     const value = {
         currentUser,
         signup,

@@ -33,13 +33,20 @@ const [message,setMessage]=useState();
 
 
         })
-},[message])
+},[])
 
 
 function removeItem(itemToRemove){
-const newData=allProducts.filter(item=> item.id !== itemToRemove.id);
+const newData=allProducts.filter(item=> item.itemNum !== itemToRemove.itemNum);
+setAllProducts(newData);
+console.log(newData);
+const itemsAfterRemove=myProducts.filter(item=> item.itemNum !== itemToRemove.itemNum);
+setMyProducts(itemsAfterRemove);
 addFS("Items", "Products", {item:newData}).then(()=>{
   setMessage("המוצר הוסר מהרשימה");
+  setTimeout(()=>{
+    setMessage(null)
+  },2000)
 })
 }
 

@@ -21,6 +21,8 @@ import ErrNotLoggedIn from "./Components/ErrNotLoggedIn";
 import Footer from "./Components/Footer";
 import Sofrim from "./Components/Sofrim";
 import Sofer from "./Components/Sofer";
+import EmailAfterPurchas from "./Components/EmailAfterPurchas";
+import EmailverfElert from "./Components/EmailverfElert";
 function App() {
   const{currenUserInfoState} = useCurrenUserInfo();
   const { currentUser } = useAuth();
@@ -38,11 +40,11 @@ function App() {
         <Route path="/:product" element={<Store/>} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/sofrim" element={<Sofrim />} />
-        <Route path="/sofrim/:name" element={<Sofer />} />
+        <Route path="/sofrim/:name" element={<Sofer />} />       
         <Route path="/about" element={<About />} />
         <Route path="/addingSeller" element={(currenUserInfoState?.sofer)?(<AddingSeller/>):<ErrNotLoggedIn/>} />
-        <Route path="/:product/:itemNum" element={(currenUserInfoState)?(<Product/>):((currentUser)?<ThreeDots/>:<ErrNotLoggedIn/>)} />
-        <Route path="/addDetailes" element={((currentUser)?<AddDetailes/>:<ErrNotLoggedIn/>)} />
+        <Route path="/:product/:itemNum" element={(currenUserInfoState)?(<Product/>):((currentUser)?(currentUser.emailVerified)?<ThreeDots/>:<EmailverfElert/>:<ErrNotLoggedIn/>)} />
+        <Route path="/addDetailes" element={((currentUser)?(currentUser.emailVerified?<AddDetailes/>:<EmailverfElert/>):<ErrNotLoggedIn/>)} />
         <Route path="/userDetailes" element={(currenUserInfoState)?(<UserDetailes/>):((currentUser)?<ThreeDots/>:<ErrNotLoggedIn/>)} />
         <Route path="/cart" element={(currenUserInfoState)?(<Cart/>):((currentUser)?<ThreeDots/>:<ErrNotLoggedIn/>)} />
 

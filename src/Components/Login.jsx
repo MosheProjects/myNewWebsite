@@ -16,7 +16,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { getDataFS } = useFirestore();
-  const { setCurrenUserInfoState } = useCurrenUserInfo();
+  const { setCurrenUserInfoState,currenUserInfoState } = useCurrenUserInfo();
   
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function Login() {
     setError("");
     setLoading(true);
     await login(emailRef.current.value, passwordRef.current.value)
-      .then((person) => { return getDataFS(person.user.uid) })
+      .then((person) => {console.log(currenUserInfoState); if(currenUserInfoState===null) {navigate('/addDetailes')} else { return getDataFS(person.user.uid)} })
       .then((userData) => { setCurrenUserInfoState(userData);  })
       .then(() => navigate('/'))
       .catch((error) => {

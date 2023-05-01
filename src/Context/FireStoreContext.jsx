@@ -17,6 +17,8 @@ import { useContext, createContext } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage,colection } from "../firebase";
 import {query, where, getDocs } from "firebase/firestore";
+import {useCurrenUserInfo} from './CurrenUserInfoContext'
+
 
 const FirestoreContext = createContext();
 
@@ -25,9 +27,12 @@ export function useFirestore() {
 }
 
 export function FirestoreProvider({ children }) {
+
+
   async function addFS(type, uid, data) {
     await setDoc(doc(db, type, uid), data).then((data) =>
-      console.log("data was uploded sucsesfully", data)
+    {
+      console.log("data was uploded sucsesfully", data)}
     );
   }
   async function addFsForum(uid, data) {
@@ -48,7 +53,7 @@ export function FirestoreProvider({ children }) {
     const UserRef = doc(db, type, uid);
     await updateDoc(UserRef, {
       [field]: value,
-    });
+    })
   }
 
   async function deleteFS(uid) {

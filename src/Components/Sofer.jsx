@@ -1,7 +1,9 @@
 import React from "react";
 import { useParams } from "react-router";
+import genPerson from "../Images/gen-person.jpg";
 import { useEffect, useState } from "react";
 import { useFirestore } from "../Context/FireStoreContext";
+import { useAuth } from "../Context/AuthContext";
 import {
   MDBCol,
   MDBContainer,
@@ -18,14 +20,15 @@ import ThreeDots from "./ThreeDots";
 
 export default function Sofer() {
   const { name } = useParams();
-  const { getWholeCollection } = useFirestore();
-  const [sofer, setSofer] = useState();
+  const { currentUser } = useAuth();
+  const { getWholeCollection, getDataFS } = useFirestore();
+  const [sofer, setSofer] = useState(null);
   const [sofrim, setSofrim] = useState();
   const [flag, setFlag] = useState(false);
-
+  const [myImages, setMyImages] = useState(null);
   useEffect(() => {
     const tempArr = [];
-    const dataOfUsers = getWholeCollection("Sellers", "sofer",true);
+    const dataOfUsers = getWholeCollection("Sellers", "sofer", true);
     dataOfUsers.then((data) => {
       console.log(data);
       data.forEach((doc) => {
@@ -34,6 +37,7 @@ export default function Sofer() {
       setSofrim(tempArr);
       setFlag(true);
     });
+    
   }, []);
 
   useEffect(() => {
@@ -41,17 +45,19 @@ export default function Sofer() {
       const findSofer = sofrim?.find((s, i) => s.pName + s.sName + i === name);
       setSofer(findSofer);
     }
+   
   }, [sofrim]);
-
+useEffect(()=>{
+if(sofer){
+  getDataFS("Images", sofer.id).then((data) => {
+    setMyImages(data.urls);
+  });
+}
+},[sofer])
   return (
     <div dir="rtl">
       {sofer ? (
-        <Tabs
-          id="responsive-tabs"
-          className="mb-3"
-          justify
-          transition={false}
-        >
+        <Tabs id="responsive-tabs" className="mb-3" justify transition={false}>
           <Tab eventKey="profile" title="פרופיל">
             <div
               className="gradient-custom-2"
@@ -70,7 +76,7 @@ export default function Sofer() {
                           style={{ width: "150px" }}
                         >
                           <MDBCardImage
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                            src={genPerson}
                             alt="Generic placeholder image"
                             className="mt-4 mb-2 img-thumbnail"
                             fluid
@@ -132,53 +138,28 @@ export default function Sofer() {
                         >
                           <Tab eventKey="pics" title="תמונות של הכתיבה שלי ">
                             <div className="d-flex justify-content-between align-items-center mb-4">
-                              <MDBCardText className="lead fw-normal mb-0">
-                                תמונות של המוצרי סת"ם שלי{" "}
-                              </MDBCardText>
-                              <MDBCardText className="mb-0">
-                                <a href="#!" className="text-muted">
-                                  Show all
-                                </a>
-                              </MDBCardText>
+                             
                             </div>
-                            <MDBRow>
-                              <MDBCol className="mb-2">
-                                <MDBCardImage
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                                  alt="image 1"
-                                  className="w-100 rounded-3"
-                                />
-                              </MDBCol>
-                              <MDBCol className="mb-2">
-                                <MDBCardImage
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                                  alt="image 1"
-                                  className="w-100 rounded-3"
-                                />
-                              </MDBCol>
-                            </MDBRow>
-                            <MDBRow className="g-2">
-                              <MDBCol className="mb-2">
-                                <MDBCardImage
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                                  alt="image 1"
-                                  className="w-100 rounded-3"
-                                />
-                              </MDBCol>
-                              <MDBCol className="mb-2">
-                                <MDBCardImage
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                                  alt="image 1"
-                                  className="w-100 rounded-3"
-                                />
-                              </MDBCol>
-                            </MDBRow>
+                            {
+                            myImages? 
+                            myImages.map((item) => {
+                              return(  <MDBRow>
+                                <MDBCol className="mb-2">
+                                  <MDBCardImage
+                                    src={item}
+                                    alt="image 1"
+                                    className="w-100 rounded-3"
+                                  />
+                                </MDBCol>
+                              </MDBRow>)
+                            
+                            }):<div>אין תמונות של העבודות של סופר זה להצגה כרגע </div>}
                           </Tab>
-                          <Tab  eventKey="documents" title="תעודות ההסמכה שלי">
+                          <Tab eventKey="documents" title="תעודות ההסמכה שלי">
                             <iframe
                               src={sofer.path}
                               className=" w-100 rounded-3"
-                              style={{height:'450px'}}
+                              style={{ height: "450px" }}
                             ></iframe>
                           </Tab>
                         </Tabs>
@@ -194,7 +175,7 @@ export default function Sofer() {
             prducts{" "}
           </Tab>
           <Tab eventKey="reveiws" title="חוות דעת">
-            חוות דעת{" "}על הסופר
+            חוות דעת על הסופר
           </Tab>
         </Tabs>
       ) : (

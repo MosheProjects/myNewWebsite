@@ -53,7 +53,24 @@ export default function AddingSeller() {
 
     const tempArr = [...itemsinfo.item, item];
     console.log("tempArr:",tempArr);
-    updateFS("Items","Products","item",tempArr)
+    updateFS("Items","Products","item",tempArr).then(()=>{
+      getDataFS("Images", currentUser.uid).then((data) => {
+        console.log(data);
+        if(data===null){ addFS("Images",currentUser.uid,{urls:[url]}).then(()=>{
+          console.log("image url uploded first time");
+         })}
+       else if(data.urls)
+       { const tempArray = [...data.urls];
+        tempArray.push(url);
+       console.log("this is my updated arr",tempArray,"and this is the url",url);
+        updateFS("Images",currentUser.uid,"urls",tempArray).then(()=>{
+        console.log("image url uploded and updated");
+       })}
+       
+       
+       
+      })
+    })
   }
 
   // useEffect(() => {
