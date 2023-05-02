@@ -196,10 +196,12 @@ export default function HomePage() {
         <div className="special-order-message">
  <div className="ad-banner">
         <h3>לא מוצא את מה שחיפשת?</h3>
-        <p>זקוק למוצרי סת"ם שלא מופיעים כרגע באתר או לכמות יותר גדולה ?<br/> <br/>צור קשר </p>
+        <p>זקוק למוצרי סת"ם שלא מופיעים כרגע באתר או לכמות יותר גדולה ?  </p>
      </div>
       <div className="contact-options">
-        <a href="tel:+972586770870"><FaPhone /> 0586-770-870</a>
+      <span className="mb-3 ">צור קשר</span>
+
+        <a  href="tel:+972586770870"><FaPhone /> 0586-770-870</a>
         <a href="https://wa.me/+972586770870"><FaWhatsapp />  0586-770-870</a>
         <a href="mailto:sofraistam@gmail.com"><FaEnvelope /> sofraistam@gmail.com</a>
       </div>
