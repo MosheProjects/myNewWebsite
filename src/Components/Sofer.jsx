@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useParams } from "react-router";
 import genPerson from "../Images/gen-person.jpg";
 import { useEffect, useState } from "react";
@@ -15,7 +17,7 @@ import {
   MDBBtn,
   MDBTypography,
 } from "mdb-react-ui-kit";
-import { Tab, Tabs } from "react-bootstrap";
+import { Tab, Tabs,Button,Card } from "react-bootstrap";
 import ThreeDots from "./ThreeDots";
 
 export default function Sofer() {
@@ -26,6 +28,8 @@ export default function Sofer() {
   const [sofrim, setSofrim] = useState();
   const [flag, setFlag] = useState(false);
   const [myImages, setMyImages] = useState(null);
+const [allProducts,setAllProducts]=useState([]);
+
   useEffect(() => {
     const tempArr = [];
     const dataOfUsers = getWholeCollection("Sellers", "sofer", true);
@@ -52,6 +56,15 @@ if(sofer){
   getDataFS("Images", sofer.id).then((data) => {
     setMyImages(data.urls);
   });
+  getDataFS("Items","Products").then((data)=>{
+    const arrayOfCurrProducts=[];
+    data.item.map((item)=>{
+      if(item.id===sofer.id)
+      arrayOfCurrProducts.push(item);
+    })
+    setAllProducts(arrayOfCurrProducts)
+console.log(allProducts);
+  })
 }
 },[sofer])
   return (
@@ -172,7 +185,31 @@ if(sofer){
           </Tab>
 
           <Tab eventKey="products" title="מוצרים">
-            prducts{" "}
+            <h1>המוצרים שלי</h1>
+      {allProducts.length !== 0?
+        allProducts.map((item)=>{
+          return(
+            <Card style={{ width: '22rem' }}>
+            <Card.Img  style={{height:'230px'}} variant="top" src={item.img} />
+            <Card.Body>
+              <Card.Title>{item.catagory[1]} </Card.Title>
+              <Card.Text>
+              <span style={{fontWeight:'bold'}}> שם הסופר:</span>{item.name}
+                <br/>
+                <span style={{fontWeight:'bold'}}>   כתב:</span>{item.script}
+                <br/>
+                <span style={{fontWeight:'bold'}}>  גודל:</span>{item.size}
+                <br/>
+                <span style={{fontWeight:'bold'}}> רמת הידור:</span>{item.level}
+                <br/>
+                <span style={{fontWeight:'bold'}}>  הגהה:</span>{item.check}
+              </Card.Text>
+              <Link to={`/${item.catagory[0]}/${item.itemNum}`}><Button variant="primary">לרכישה</Button></Link>
+            </Card.Body>
+          </Card>
+          )
+        }):<div className="vh-100 mt-5">אין לסופר כרגע מוצרים להצגה</div>
+      }
           </Tab>
           <Tab eventKey="reveiws" title="חוות דעת">
             חוות דעת על הסופר

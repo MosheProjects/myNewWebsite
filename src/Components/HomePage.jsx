@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { Card, Row, Col, Container, Carousel } from "react-bootstrap";
+import { Card, Row, Col, Container, Carousel, Image } from "react-bootstrap";
 import Rating from "@mui/material/Rating";
 import ReactPlayer from "react-player";
 import { Link } from "react-router-dom";
-import { FaPhone, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import Whatsapp from "../Whatsapp";
-import './styles/homepage.css'
+import "./styles/homepage.css";
+import Purchase from "./Purchase";
+import Message from "./Message";
 export default function HomePage() {
   const [hover1, setHover1] = useState();
   const [hover2, setHover2] = useState();
@@ -14,61 +16,101 @@ export default function HomePage() {
   const [hover4, setHover4] = useState();
   const [hover5, setHover5] = useState();
   const [hover6, setHover6] = useState();
-  
+
   return (
     <div className="mb-4 " dir="rtl" style={{ backgroundColor: "LightGray" }}>
-  <Carousel 
-      style={{ height: "300px" }} 
-      controls={false} 
-      indicators={false}
-      interval={4000}
-    >
-      <Carousel.Item>
-        <Container>
-          <Row className="justify-content-center align-items-center">
-            <Col md={6} className="text-center">
-              <h1 className="mb-4">מחפש לקנות את המזוזה הכי מהודרת ואתה מרגיש אבוד?</h1>
-              <h4>אצלינו תוכל לוודא שאתה אכן קונה את המוצר הכי טוב והכי מהודר במחיר הכי טוב</h4>
-              <Link to={'/mezuzot'}><Button className="mt-3">למזוזות מהודרות לחץ כאן</Button></Link>
-            </Col>
-          </Row>
-        </Container>
-      </Carousel.Item>
-      <Carousel.Item>
+      <Message/>
+      <Carousel
+        style={{ height: "300px" }}
+        controls={false}
+        indicators={false}
+        interval={4000}
+      >
+        <Carousel.Item>
+          <Container>
+            <Row className="justify-content-center align-items-center">
+              <Col md={6} className="text-center">
+                <h1 className="mb-4">
+                  מחפש לקנות את המזוזה הכי מהודרת ואתה מרגיש אבוד?
+                </h1>
+                <h4>
+                  אצלינו תוכל לוודא שאתה אכן קונה את המוצר הכי טוב והכי מהודר
+                  במחיר הכי טוב
+                </h4>
+                <Link to={"/mezuzot"}>
+                  <Button className="mt-3">למזוזות מהודרות לחץ כאן</Button>
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Container>
+            <Row className="justify-content-center align-items-center">
+              <Col md={6} className="text-center">
+                <h1 className="mb-4">
+                  הבר-מצווה של הבן מתקרב ואתה מרגיש מבולבל?
+                </h1>
+                <h4>אצלינו תוכל למצוא את הפרשיות הכי מהודרות מבלי לחשוש</h4>
+                <Link to={"/tefilin"}>
+                  <Button className="mt-3">
+                    לפרשיות תפילין מהודרות לחץ כאן
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Container>
+            <Row className="justify-content-center align-items-center">
+              <Col md={6} className="text-center">
+                <h1 className="mb-4">
+                  האתר בו תוכל למצוא את הסת"ם הכי מהודר בהתאם לכיס שלך
+                </h1>
+                <h4>
+                  סופרי סת"ם שרוצים לבנות את עצמם מחכים לך כאן - הם לא יאכזבו
+                  אותך
+                </h4>
+                <Link to={"/sofrim"}>
+                  <Button className="mt-3">לכל סופרי הסת"ם לחץ כאן</Button>
+                </Link>
+              </Col>
+            </Row>
+          </Container>
+        </Carousel.Item>
+      </Carousel>
+      <div >
+       
 
-        <Container>
-          <Row className="justify-content-center align-items-center">
-            <Col md={6} className="text-center">
-              <h1 className="mb-4">הבר-מצווה של הבן מתקרב ואתה מרגיש מבולבל?</h1>
-              <h4>אצלינו תוכל למצוא את הפרשיות הכי מהודרות מבלי לחשוש</h4>
-              <Link to={'/tefilin'}><Button className="mt-3">לפרשיות תפילין מהודרות לחץ כאן</Button></Link>
-            </Col>
-          </Row>
-        </Container>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Container>
-          <Row className="justify-content-center align-items-center">
-            <Col md={6} className="text-center">
-              <h1 className="mb-4">האתר בו תוכל למצוא את הסת"ם הכי מהודר בהתאם לכיס שלך</h1>
-              <h4>סופרי סת"ם שרוצים לבנות את עצמם מחכים לך כאן - הם לא יאכזבו אותך</h4>
-              <Link to={'/sofrim'}><Button className="mt-3">לכל סופרי הסת"ם לחץ כאן</Button></Link>
+<Image
+        src="https://scontent.ftlv1-1.fna.fbcdn.net/v/t39.30808-6/327275585_1708260916259147_2958411966578064511_n.png?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=RPUrG21UhWEAX8-PDO8&_nc_ht=scontent.ftlv1-1.fna&oh=00_AfCmYudQUqEMGzWzI8ZRiMdmeP1LD0OG3gRealSQSke6MQ&oe=64568A7A"
+        className=""
+        thumbnail
+        
+      />
+<div className="container w-75 mt-4">
+  <div className=" justify-content-center ">
+      <div className="card bg-light">
+        <div className="card-body">
+          <h2 className="card-title text-center">מהו הייעוד של האתר?</h2>
+          <p className="card-text text-center">המטרה של האתר הוא להנגיש לאלו שלא מבינים בסת"ם אבל לא מתפשרים על הידור ואיכות את הסחורה הטובה ביותר, פה תוכלו לראות את הסחורה בלי שום מתווך, תוכלו לראות את מי שכתב את ההסמכה שלו ואת התמונות של העבודה לו ולפי זה תוכלו לבחור ממי בדיוק אתם רוצים לקנות, כל מזוזה שנכתבה הסוחר מעלה את התמונה של הכתב עם כל הפרטים עליה ,כשבנוסף יהיה מגיה מוסמך מטעמינו שיאשר לפי נראות התמונה את רמת הכשרות של המוצר המדובר</p>
+        </div>
+    </div>
+  </div>
+ 
+</div>
+</div>
 
-            </Col>
-          </Row>
-        </Container>
-      </Carousel.Item>
-    </Carousel>
-      <div className=" mt-4 d-flex flex-wrap gap-3 justify-content-center" >
-        <Row className="row justify-content-center gap-3">
+      <div className=" d-flex mt-5 flex-wrap justify-content-center gap-3">
+        <Row className="row">
           <Col xs={12} md={6} lg={4} className="col">
             <Card
               border="10px"
               onMouseEnter={() => setHover1(true)}
               onMouseLeave={() => setHover1(false)}
               style={{
-                width: "24rem",
-
+               
                 cursor: "pointer",
                 transition: "all 0.2s ease-in-out",
                 transform: hover1 ? "scale(1.05)" : "scale(1)",
@@ -78,7 +120,7 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
+              
                 variant="top"
                 src="https://veata-kadosh.com/wp-content/uploads/2022/12/0D9A1DC0-8E44-45F5-B9CC-74CF48796CE2.jpeg"
               />
@@ -100,7 +142,6 @@ export default function HomePage() {
               onMouseEnter={() => setHover2(true)}
               onMouseLeave={() => setHover2(false)}
               style={{
-                width: "24rem",
 
                 cursor: "pointer",
                 transition: "all 0.2s ease-in-out",
@@ -111,7 +152,6 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
                 variant="top"
                 src="https://www.tfilot.org/wp-content/uploads/2021/06/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%AA%D7%A4%D7%99%D7%9C%D7%99%D7%9F-300x175.jpg"
               />
@@ -133,7 +173,6 @@ export default function HomePage() {
               onMouseEnter={() => setHover3(true)}
               onMouseLeave={() => setHover3(false)}
               style={{
-                width: "24rem",
 
                 cursor: "pointer",
                 transition: "all 0.2s ease-in-out",
@@ -144,7 +183,6 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
                 variant="top"
                 src="https://kavhalacha.co.il/images/avi/images/62328072_l.jpg"
               />
@@ -165,7 +203,6 @@ export default function HomePage() {
               onMouseEnter={() => setHover4(true)}
               onMouseLeave={() => setHover4(false)}
               style={{
-                width: "24rem",
 
                 cursor: "pointer",
                 transition: "all 0.2s ease-in-out",
@@ -176,7 +213,6 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
                 variant="top"
                 src="https://tifarashop.co.il/content/images/thumbs/0002002_-.jpeg"
               />
@@ -192,30 +228,6 @@ export default function HomePage() {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
-        <div className="special-order-message">
- <div className="ad-banner">
-        <h3>לא מוצא את מה שחיפשת?</h3>
-        <p>זקוק למוצרי סת"ם שלא מופיעים כרגע באתר או לכמות יותר גדולה ?  </p>
-     </div>
-      <div className="contact-options">
-      <span className="mb-3 ">צור קשר</span>
-
-        <a  href="tel:+972586770870"><FaPhone /> 0586-770-870</a>
-        <a href="https://wa.me/+972586770870"><FaWhatsapp />  0586-770-870</a>
-        <a href="mailto:sofraistam@gmail.com"><FaEnvelope /> sofraistam@gmail.com</a>
-      </div>
-    </div>
-      </div>
- 
-      <div
-        className="d-flex justify-content-center align-items-center mt-3"
-        style={{ backgroundColor: "brown", height: "150px" }}
-      >
-        <h1>סופרים ומגיהים</h1>
-      </div>
-      <div className=" mt-4">
-        <Row className="justify-content-center">
           <Col xs={12} md={6} lg={4} className="col">
             <Card
               className="mb-3"
@@ -223,7 +235,6 @@ export default function HomePage() {
               onMouseLeave={() => setHover5(false)}
               style={{
                 cursor: "pointer",
-                width: "24rem",
                 transition: "all 0.2s ease-in-out",
                 transform: hover5 ? "scale(1.05)" : "scale(1)",
                 boxShadow: hover5
@@ -232,7 +243,6 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
                 variant="top"
                 src="https://www.picshare.co.il/m_pictures/img150825.jpg"
               />
@@ -255,7 +265,6 @@ export default function HomePage() {
               onMouseLeave={() => setHover6(false)}
               style={{
                 cursor: "pointer",
-                width: "24rem",
                 transition: "all 0.2s ease-in-out",
                 transform: hover6 ? "scale(1.05)" : "scale(1)",
                 boxShadow: hover6
@@ -264,7 +273,6 @@ export default function HomePage() {
               }}
             >
               <Card.Img
-                style={{ height: "230px" }}
                 variant="top"
                 src="https://keterhalacha.co.il/wp-content/uploads/2019/12/IMG-20160510-WA0032.jpg"
               />
@@ -278,8 +286,11 @@ export default function HomePage() {
                 </Link>
               </Card.Body>
             </Card>
+
           </Col>
         </Row>
+       
+      
         <Whatsapp />
       </div>
     </div>

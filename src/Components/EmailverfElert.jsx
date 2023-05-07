@@ -15,7 +15,7 @@ export default function () {
           <Card>
             <Card.Body className="d-flex flex-column justify-content-evenly">
               <Alert variant="danger">אנא אשר את האימייל שלך</Alert>
-              <a href="gmail.com">לתיבת המייל</a>
+              <a href="https://mail.google.com/">לתיבת המייל</a>
             </Card.Body>
           </Card>
         </div>

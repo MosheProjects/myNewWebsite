@@ -149,8 +149,8 @@ export default function Product() {
             <h1 className="mb-4">{currProduct.name}</h1>
             {message && <Alert variant="danger">{message}</Alert>}
             <h4 className="mb-4">{currProduct.description}</h4>
-            <h5 className="mb-4">
-              כתב: {currProduct.script}, גודל: {currProduct.size}, רמת כשרות:{" "}
+            <h5 className="mb-4 ">
+              כתב: {currProduct.script} <br /> גודל: {currProduct.size}<br /> רמת כשרות:{" "}
               {currProduct.level}
             </h5>
             <h3 className="mb-4">
@@ -173,7 +173,7 @@ export default function Product() {
                 >
                   +
                 </Button>
-                <span contentEditable>כמות במלאי: {currProduct.amount}</span>{" "}
+                <span className="m-4" >כמות במלאי: {currProduct.amount}</span>{" "}
               </div>
               <Button
                 disabled={flag}
